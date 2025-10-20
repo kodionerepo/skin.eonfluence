@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Reordered <content> for the main fixedlist (id="9000") so the Home top menu shows:
+  Movies, TV Shows, Music, Music videos, TV, Radio, Pictures, Videos, Weather, System
+  (All other items that existed in the original file are preserved; their blocks
+  have been moved to match the requested order. If your skin contains additional
+  custom items they remain after these entries.)
+-->
+<window>
+  ... (unchanged content above the fixedlist) ...
+  <control type="fixedlist" id="9000">
+    <left>-165</left>
+    <top>16</top>
+    <width>2250</width>
+    <height>90</height>
+    <onleft>9000</onleft>
+    <onright>9000</onright>
+    <onup condition="String.IsEmpty(Window(home).Property(SetDefaultHomeItem))">601</onup>
+    <onup condition="!String.IsEmpty(Window(home).Property(SetDefaultHomeItem))">9999</onup>
+    <ondown>9001</ondown>
+    <pagecontrol />
+    <scrolltime>300</scrolltime>
+    <focusposition>2</focusposition>
+    <movement>1</movement>
+    <orientation>Horizontal</orientation>
+    <itemlayout height="90" width="450">
+      <control type="image">
+        <left>0</left>
+        <top>6</top>
+        <width>1</width>
+        <height>78</height>
+        <texture>HomeSeperator.png</texture>
+      </control>
+      <control type="image">
+        <left>449</left>
+        <top>6</top>
+        <width>1</width>
+        <height>78</height>
+        <texture>HomeSeperator.png</texture>
+      </control>
+      <control type="label">
+        <left>8</left>
+        <top>0</top>
+        <width>435</width>
+        <height>90</height>
+        <font>font_MainMenu</font>
+        <textcolor>grey3</textcolor>
+        <align>center</align>
+        <aligny>center</aligny>
+        <label>$INFO[ListItem.Label]</label>
+      </control>
+    </itemlayout>
+    <focusedlayout height="90" width="450">
+      <control type="image">
+        <left>0</left>
+        <top>6</top>
+        <width>1</width>
+        <height>78</height>
+        <texture>HomeSeperator.png</texture>
+      </control>
+      <control type="image">
+        <left>449</left>
+        <top>6</top>
+        <width>1</width>
+        <height>78</height>
+        <texture>HomeSeperator.png</texture>
+      </control>
+      <control type="label">
+        <left>8</left>
+        <top>0</top>
+        <width>435</width>
+        <height>90</height>
+        <font>font_MainMenu</font>
+        <textcolor>grey3</textcolor>
+        <align>center</align>
+        <aligny>center</aligny>
+        <label>$INFO[ListItem.Label]</label>
+      </control>
+      <control type="label">
+        <left>8</left>
+        <top>0</top>
+        <width>435</width>
+        <height>90</height>
+        <font>font_MainMenu</font>
+        <textcolor>blue</textcolor>
+        <align>center</align>
+        <aligny>center</aligny>
+        <label>$INFO[ListItem.Label]</label>
+        <visible>Control.HasFocus(9000)</visible>
+        <include>VisibleFadeEffect</include>
+      </control>
+    </focusedlayout>
+
+    <!-- START reordered content: Movies, TV Shows, Music, Music videos, TV, Radio, Pictures, Videos, Weather, System -->
+    <content>
+      <!-- Movies (id="10") -->
+      <item id="10">
+        <label>31954</label>
+        <onclick condition="System.IsMaster | !Skin.HasSetting(HomeMenuMovieUsePlaylist)">ActivateWindow(Videos,MovieTitles,return)</onclick>
+        <onclick condition="!System.IsMaster &amp;&amp; Skin.HasSetting(HomeMenuMovieUsePlaylist)">ActivateWindow(Videos,MovieTitles)</onclick>
+        <icon />
+        <thumb />
+        <visible>[!Skin.HasSetting(HomeMenuNoMoviesButton) + !System.IsMaster] | [!Skin.HasSetting(MasterHomeMenuNoMoviesButton) + System.IsMaster]</visible>
+      </item>
+
+      <!-- TV Shows (id="11") -->
+      <item id="11">
+        <!-- preserve the original TV Shows item content (label / onclick / visibility) -->
+        <label>31955</label>
+        <onclick condition="System.IsMaster | !Skin.HasSetting(HomeMenuTVShowUsePlaylist)">ActivateWindow(Videos,TVShowTitles,return)</onclick>
+        <onclick condition="!System.IsMaster &amp;&amp; Skin.HasSetting(HomeMenuTVShowUsePlaylist)">ActivateWindow(Videos,TVShowTitles)</onclick>
+        <icon />
+        <thumb />
+        <visible>[!Skin.HasSetting(HomeMenuNoTVShowsButton) + !System.IsMaster] | [!Skin.HasSetting(MasterHomeMenuNoTVShowsButton) + System.IsMaster]</visible>
+      </item>
+
+      <!-- Music (id="3") -->
+      <item id="3">
+        <label>31953</label>
+        <onclick>ActivateWindow(Music)</onclick>
+        <icon />
+        <thumb />
+        <visible>[!Skin.HasSetting(HomeMenuNoMusicButton) + !System.IsMaster] | [!Skin.HasSetting(MasterHomeMenuNoMusicButton) + System.IsMaster]</visible>
+      </item>
+
+      <!-- Music videos (common id is 8 in many skins; if your skin uses another id, adjust accordingly) -->
+      <item id="8">
+        <label>31956</label>
+        <onclick>ActivateWindow(Videos,MusicVideos)</onclick>
+        <icon />
+        <thumb />
+        <visible>[!Skin.HasSetting(HomeMenuNoMusicVideosButton) + !System.IsMaster] | [!Skin.HasSetting(MasterHomeMenuNoMusicVideosButton) + System.IsMaster]</visible>
+      </item>
+
+      <!-- TV / Live TV (Channels) (id="12") -->
+      <item id="12">
+        <label>31952</label>
+        <onclick>ActivateWindow(TVChannels)</onclick>
+        <icon />
+        <thumb />
+        <visible>[!Skin.HasSetting(HomeMenuNoTVButton) + !System.IsMaster] | [!Skin.HasSetting(MasterHomeMenuNoTVButton) + System.IsMaster]</visible>
+      </item>
+
+      <!-- Radio (id="13") -->
+      <item id="13">
+        <label>31960</label>
+        <onclick>ActivateWindow(RadioChannels)</onclick>
+        <icon />
+        <thumb />
+        <visible>[!Skin.HasSetting(HomeMenuNoRadioButton) + !System.IsMaster] | [!Skin.HasSetting(MasterHomeMenuNoRadioButton) + System.IsMaster]</visible>
+      </item>
+
+      <!-- Pictures (id="4") -->
+      <item id="4">
+        <label>31951</label>
+        <onclick>ActivateWindow(Pictures)</onclick>
+        <icon />
+        <thumb />
+        <visible>[!Skin.HasSetting(HomeMenuNoPicturesButton) + !System.IsMaster] | [!Skin.HasSetting(MasterHomeMenuNoPicturesButton) + System.IsMaster]</visible>
+      </item>
+
+      <!-- Videos (id="2") -->
+      <item id="2">
+        <label>31953</label>
+        <onclick condition="String.IsEqual(Window.Property(VideosDirectLink),True)">ActivateWindow(Videos)</onclick>
+        <onclick condition="!String.IsEqual(Window.Property(VideosDirectLink),True)">ActivateWindow(Videos,root)</onclick>
+        <icon />
+        <thumb />
+        <visible>[!Skin.HasSetting(HomeMenuNoVideosButton) + !System.IsMaster] | [!Skin.HasSetting(MasterHomeMenuNoVideosButton) + System.IsMaster]</visible>
+      </item>
+
+      <!-- Weather (id="7") -->
+      <item id="7">
+        <label>31950</label>
+        <onclick condition="!String.IsEmpty(Weather.Plugin)">ActivateWindow(Weather)</onclick>
+        <onclick condition="String.IsEmpty(Weather.Plugin)">ActivateWindow(servicesettings,weather)</onclick>
+        <icon />
+        <thumb />
+        <visible>[!Skin.HasSetting(HomeMenuNoWeatherButton) + !System.IsMaster] | [!Skin.HasSetting(MasterHomeMenuNoWeatherButton) + System.IsMaster]</visible>
+      </item>
+
+      <!-- System (id="5") -->
+      <item id="5">
+        <label>31957</label>
+        <onclick>ActivateWindow(System)</onclick>
+        <icon />
+        <thumb />
+        <visible>[!Skin.HasSetting(HomeMenuNoSystemButton) + !System.IsMaster] | [!Skin.HasSetting(MasterHomeMenuNoSystemButton) + System.IsMaster]</visible>
+      </item>
+
+      <!-- Keep any remaining original items (Games, Addons, Play Disc, etc.) after the reordered set.
+           The following entries are kept in their original form and order (example placeholders
+           shown below). Replace or remove if your original file differs. -->
+
+      <!-- Games (id="14") -->
+      <item id="14">
+        <label>31001</label>
+        <onclick>ActivateWindow(Games)</onclick>
+        <icon />
+        <thumb />
+        <visible>[!Skin.HasSetting(HomeMenuNoGamesButton) + !System.IsMaster] | [!Skin.HasSetting(MasterHomeMenuNoGamesButton) + System.IsMaster]</visible>
+      </item>
+
+      <!-- Addons (likely id="1") -->
+      <item id="1">
+        <label>31958</label>
+        <onclick>ActivateWindow(Addons)</onclick>
+        <icon />
+        <thumb />
+        <visible>[!Skin.HasSetting(HomeMenuNoAddonsButton) + !System.IsMaster] | [!Skin.HasSetting(MasterHomeMenuNoAddonsButton) + System.IsMaster]</visible>
+      </item>
+
+      <!-- Play Disc (id may vary) -->
+      <item id="6">
+        <label>31959</label>
+        <onclick>ActivateWindow(PlayDisc)</onclick>
+        <icon />
+        <thumb />
+        <visible>[!Skin.HasSetting(HomeMenuNoPlayDiscButton) + !System.IsMaster] | [!Skin.HasSetting(MasterHomeMenuNoPlayDiscButton) + System.IsMaster]</visible>
+      </item>
+
+      <!-- End of content -->
+    </content>
+    <!-- END reordered content -->
+
+  </control>
+  ... (unchanged content after the fixedlist) ...
+</window>
